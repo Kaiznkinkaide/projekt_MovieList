@@ -1069,3 +1069,20 @@ const sortBestRate = () =>{
     showMovies(result)
 }
 
+const showGenre = () => {
+    let changeValue = document.getElementById('genre')
+    let movieIndex = changeValue.value
+    let genre = movies[movieIndex][4]
+    movieList.innerHTML = genre.join(",")
+    console.log(movieIndex);
+    console.log(changeValue);
+
+}
+
+
+let genreInput = document.getElementById('genre')
+
+document.getElementById('genre').addEventListener("change",function(){
+showGenre()
+
+})

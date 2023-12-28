@@ -1034,8 +1034,8 @@ const search = () => {
     console.log(input);
 for(let i = 0; i < movieLength; i++){
     result = movies.filter((movie) => movie[0].toLowerCase().includes(input.toLowerCase()))
+    
 }
-
 
 reset()
 showMovies(result)
@@ -1070,12 +1070,10 @@ const sortBestRate = () =>{
 }
 
 const showGenre = () => {
-    let changeValue = document.getElementById('genre')
-    let movieIndex = changeValue.value
-    let genre = movies[movieIndex][4]
-    movieList.innerHTML = genre.join(",")
-    console.log(movieIndex);
-    console.log(changeValue);
+    let changeValue = document.getElementById('genre').value;
+    let filterFilme = movies.filter(movie => movie[4].includes(changeValue.charAt(0).toUpperCase() + changeValue.slice(1)))
+    reset()
+    showMovies(filterFilme)
 
 }
 

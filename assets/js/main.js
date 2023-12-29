@@ -1012,19 +1012,22 @@ console.log(movieList);
 const showMovies = (data) => {
     
 data.forEach((movie) =>{
+    let movieFour = movie[4]
     movieList.innerHTML += `
     <div class="movieStyle">
     <h3>${movie[0]}</h3>
     <p>${movie[1]}</p>
     <p>${movie[2]}</p>
     <p>${movie[3]}</p>
-    <div class="listStyle">${movie[4].map((genre)=>`<p>${genre}</p>`).join("")}</div>
+    <div class="listStyle">${movieFour.map((genre)=>`<p>${genre}</p>`).join("")}</div>
     <p>${movie[5]}</p>
     </div>`
 }
 )
 }
 showMovies(movies)
+
+console.log(movies);
 
 const reset = () => {
     movieList.innerHTML = ""
@@ -1086,7 +1089,6 @@ const showGenre = () => {
     let filterFilme = movies.filter(movie => movie[4].includes(changeValue))
     reset()
     showMovies(filterFilme)
-
 }
 
 
@@ -1097,11 +1099,7 @@ showGenre()
 
 })
 
-let form = document.querySelector('form')
-let arrayForm = Array.from(form.children)
-console.log(arrayForm);
-
-
+// form.addEventListener("submit", add)
 let add = () => {
     let action = document.querySelector("#action").checked
     let adventure = document.querySelector("#adventure").checked
@@ -1154,14 +1152,14 @@ let add = () => {
     let length = document.getElementById('length').value
     let rating = document.getElementById('rating').value
 
-    let newFilm = []
-    newFilm.push(titel, year, regisseur, length)
+    const genreCheckboxes = document.querySelectorAll(".genre:checked");
+    const genres = Array.from(genreCheckboxes).map(checkbox => checkbox.value);
+    console.log(genres);
+    // newFilm.push(titel, year, regisseur, length)
     // movies.push(newFilm)
-    console.log(newFilm);
-    console.log(movies);
+    let toArr = [titel, year, regisseur, genres, length, rating]
+    let newFilm =[...movies, toArr]
 
-    reset()
-    showMovies(movies)
+    showMovies(newFilm)
     
 }
-arrayForm.addEventListener("submit", add())

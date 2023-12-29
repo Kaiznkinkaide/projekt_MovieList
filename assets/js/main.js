@@ -1004,10 +1004,13 @@ let movieLength = movies.length
 let movieList
 let input
 
+
+
 movieList = document.querySelector('.movieList')
 console.log(movieList);
 
 const showMovies = (data) => {
+    
 data.forEach((movie) =>{
     movieList.innerHTML += `
     <div class="movieStyle">
@@ -1094,6 +1097,9 @@ showGenre()
 
 })
 
+let form = document.querySelector('form')
+let arrayForm = Array.from(form.children)
+console.log(arrayForm);
 
 
 let add = () => {
@@ -1150,8 +1156,12 @@ let add = () => {
 
     let newFilm = []
     newFilm.push(titel, year, regisseur, length)
-    movies.unshift(newFilm)
+    // movies.push(newFilm)
     console.log(newFilm);
     console.log(movies);
 
+    reset()
+    showMovies(movies)
+    
 }
+arrayForm.addEventListener("submit", add())

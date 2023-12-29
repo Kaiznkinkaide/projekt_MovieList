@@ -1,4 +1,4 @@
-const movies = [
+let movies = [
     [
         'The Shawshank Redemption',
         '1994',
@@ -1029,17 +1029,26 @@ const reset = () => {
 
 const search = () => {
     let result
-    let result2
+    let resultYear
     input = document.getElementById('input').value
     console.log(input);
-for(let i = 0; i < movieLength; i++){
-    result = movies.filter((movie) => movie[0].toLowerCase().includes(input.toLowerCase()))
-    
-}
 
-reset()
-showMovies(result)
-}
+    result = movies.filter((movie) => movie[0].toLowerCase().includes(input.toLowerCase()))
+    resultYear = movies.filter((movie) => movie[1].toString().includes(input))
+
+    if(result.length > 0){
+        reset()
+        showMovies(result)
+    }else if(resultYear.length > 0){
+        reset()
+        showMovies(resultYear)
+    } else {
+        reset()
+        movieList.innerHTML = `<p class="noResult">No result found!</p>`
+    }
+    }
+
+
 
 const sortYearUp = () =>{
     let result
@@ -1071,7 +1080,7 @@ const sortBestRate = () =>{
 
 const showGenre = () => {
     let changeValue = document.getElementById('genre').value;
-    let filterFilme = movies.filter(movie => movie[4].includes(changeValue.charAt(0).toUpperCase() + changeValue.slice(1)))
+    let filterFilme = movies.filter(movie => movie[4].includes(changeValue))
     reset()
     showMovies(filterFilme)
 
@@ -1084,3 +1093,65 @@ document.getElementById('genre').addEventListener("change",function(){
 showGenre()
 
 })
+
+
+
+let add = () => {
+    let action = document.querySelector("#action").checked
+    let adventure = document.querySelector("#adventure").checked
+    let animation = document.querySelector("#animation").checked
+    let biography = document.querySelector("#biography").checked
+    let comedy = document.querySelector("#comedy").checked
+    let crime = document.querySelector("#crime").checked
+    let drama = document.querySelector("#drama").checked
+    let family = document.querySelector("#family").checked
+    let fantasy = document.querySelector("#fantasy").checked
+    let filmNoir = document.querySelector("#filmNoir").checked
+    let horror = document.querySelector("#horror").checked
+    let history = document.querySelector("#history").checked
+    let music = document.querySelector("#music").checked
+    let musical = document.querySelector("#musical").checked
+    let mystery = document.querySelector("#mystery").checked
+    let romance = document.querySelector("#romance").checked
+    let sport = document.querySelector("#sport").checked
+    let sciFi = document.querySelector("#sciFi").checked
+    let thriller = document.querySelector("#thriller").checked
+    let war = document.querySelector("#war").checked
+    let western = document.querySelector("#western").checked
+
+    let actionValue = document.querySelector("#action").value
+    let adventureValue = document.querySelector("#adventure").value
+    let animationValue = document.querySelector("#animation").value
+    let biographyValue = document.querySelector("#biography").value
+    let comedyValue = document.querySelector("#comedy").value
+    let crimeValue = document.querySelector("#crime").value
+    let dramaValue = document.querySelector("#drama").value
+    let familyValue = document.querySelector("#family").value
+    let fantasyValue = document.querySelector("#fantasy").value
+    let filmNoirValue = document.querySelector("#filmNoir").value
+    let horrorValue = document.querySelector("#horror").value
+    let historyValue = document.querySelector("#history").value
+    let musicValue = document.querySelector("#music").value
+    let musicalValue = document.querySelector("#musical").value
+    let mysteryValue = document.querySelector("#mystery").value
+    let romanceValue = document.querySelector("#romance").value
+    let sportValue = document.querySelector("#sport").value
+    let sciFiValue = document.querySelector("#sciFi").value
+    let thrillerValue = document.querySelector("#thriller").value
+    let warValue = document.querySelector("#war").value
+    let westernValue = document.querySelector("#western").value
+
+
+    let titel = document.getElementById('titel').value
+    let year = document.getElementById('year').value
+    let regisseur = document.getElementById('regisseur').value
+    let length = document.getElementById('length').value
+    let rating = document.getElementById('rating').value
+
+    let newFilm = []
+    newFilm.push(titel, year, regisseur, length)
+    movies.unshift(newFilm)
+    console.log(newFilm);
+    console.log(movies);
+
+}

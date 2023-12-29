@@ -1000,17 +1000,16 @@ let movies = [
         '8.3'
     ]
 ];
-let movieLength = movies.length
+
 let movieList
 let input
 
 
 
 movieList = document.querySelector('.movieList')
-console.log(movieList);
+
 
 const showMovies = (data) => {
-    
 data.forEach((movie) =>{
     let movieFour = movie[4]
     movieList.innerHTML += `
@@ -1026,8 +1025,6 @@ data.forEach((movie) =>{
 )
 }
 showMovies(movies)
-
-console.log(movies);
 
 const reset = () => {
     movieList.innerHTML = ""
@@ -1077,7 +1074,6 @@ const sortYearDown = () =>{
 const sortBestRate = () =>{
     let result
     result = movies.sort((a, b) => {
-        console.log("check");
         return b[5] - a[5]
 })
     reset()
@@ -1101,51 +1097,6 @@ showGenre()
 
 // form.addEventListener("submit", add)
 let add = () => {
-    let action = document.querySelector("#action").checked
-    let adventure = document.querySelector("#adventure").checked
-    let animation = document.querySelector("#animation").checked
-    let biography = document.querySelector("#biography").checked
-    let comedy = document.querySelector("#comedy").checked
-    let crime = document.querySelector("#crime").checked
-    let drama = document.querySelector("#drama").checked
-    let family = document.querySelector("#family").checked
-    let fantasy = document.querySelector("#fantasy").checked
-    let filmNoir = document.querySelector("#filmNoir").checked
-    let horror = document.querySelector("#horror").checked
-    let history = document.querySelector("#history").checked
-    let music = document.querySelector("#music").checked
-    let musical = document.querySelector("#musical").checked
-    let mystery = document.querySelector("#mystery").checked
-    let romance = document.querySelector("#romance").checked
-    let sport = document.querySelector("#sport").checked
-    let sciFi = document.querySelector("#sciFi").checked
-    let thriller = document.querySelector("#thriller").checked
-    let war = document.querySelector("#war").checked
-    let western = document.querySelector("#western").checked
-
-    let actionValue = document.querySelector("#action").value
-    let adventureValue = document.querySelector("#adventure").value
-    let animationValue = document.querySelector("#animation").value
-    let biographyValue = document.querySelector("#biography").value
-    let comedyValue = document.querySelector("#comedy").value
-    let crimeValue = document.querySelector("#crime").value
-    let dramaValue = document.querySelector("#drama").value
-    let familyValue = document.querySelector("#family").value
-    let fantasyValue = document.querySelector("#fantasy").value
-    let filmNoirValue = document.querySelector("#filmNoir").value
-    let horrorValue = document.querySelector("#horror").value
-    let historyValue = document.querySelector("#history").value
-    let musicValue = document.querySelector("#music").value
-    let musicalValue = document.querySelector("#musical").value
-    let mysteryValue = document.querySelector("#mystery").value
-    let romanceValue = document.querySelector("#romance").value
-    let sportValue = document.querySelector("#sport").value
-    let sciFiValue = document.querySelector("#sciFi").value
-    let thrillerValue = document.querySelector("#thriller").value
-    let warValue = document.querySelector("#war").value
-    let westernValue = document.querySelector("#western").value
-
-
     let titel = document.getElementById('titel').value
     let year = document.getElementById('year').value
     let regisseur = document.getElementById('regisseur').value
@@ -1154,12 +1105,16 @@ let add = () => {
 
     const genreCheckboxes = document.querySelectorAll(".genre:checked");
     const genres = Array.from(genreCheckboxes).map(checkbox => checkbox.value);
-    console.log(genres);
-    // newFilm.push(titel, year, regisseur, length)
-    // movies.push(newFilm)
-    let toArr = [titel, year, regisseur, genres, length, rating]
+    let toArr = [titel, year, regisseur, length , genres, rating]
     let newFilm =[...movies, toArr]
-
+    
     showMovies(newFilm)
     
+}
+
+
+let showAll = () => {
+    console.log("check");
+    reset()
+    showMovies(movies)
 }
